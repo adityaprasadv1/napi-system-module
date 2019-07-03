@@ -5,9 +5,9 @@
   "main": "index.js",
   "gypfile": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "node-gyp rebuild",
-    "clean": "node-gyp clean",
+  	"start": "node-gyp build && node index.js",
+    "build": "node-gyp build",
+    "clean": "node-gyp clean"
   },
   "repository": {
     "type": "git",

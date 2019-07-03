@@ -1,13 +1,21 @@
 #include <napi.h>
+#include <windows.h>
 
-Napi::String Method(const Napi::CallbackInfo& info) {
-  Napi::Env env = info.Env();
-  return Napi::String::New(env, "world");
+using namespace Napi;
+
+String moduleVersion(const CallbackInfo& info) {
+  Env env = info.Env();
+  return String::New(env, "0.1.0-alpha");
 }
 
-Napi::Object InitAll(Napi::Env env, Napi::Object exports) {
-  exports.Set(Napi::String::New(env, "hello"),
-              Napi::Function::New(env, Method));
+String moduleVersion1(const CallbackInfo& info) {
+  Env env = info.Env();
+  return String::New(env, "0.1.0-alpha1");
+}
+
+Object InitAll(Env env, Object exports) {
+  exports.Set(String::New(env, "moduleVersion"), Function::New(env, moduleVersion));
+  exports.Set(String::New(env, "moduleVersion1"), Function::New(env, moduleVersion1));
   return exports;
 }
 
